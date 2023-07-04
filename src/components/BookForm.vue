@@ -1,18 +1,24 @@
 <template>
-    <h2>Formulaire {{formTitle}} </h2>
-	<form @submit.prevent="submitBook">
-        <label for="title">{{titleLabel}}</label>
-        <input type="text" v-model="bookTitle"><br>
-
-        <label for="price">{{priceLabel}}</label>
-        <input type="text" v-model="bookPrice"><br>
-
-        <label for="description">{{descriptionLabel}}</label>
-        <input type="text" v-model="bookDescription"><br>
-
+  <h2>Formulaire {{formTitle}} </h2>
+  <div class="row justify-content-start">
+    	<form class="col-5 m-3" @submit.prevent="submitBook">
+        <div class="mb-3">
+          <label for="title" class="form-label">{{titleLabel}}</label>
+          <input type="text" class="form-control" v-model="bookTitle"><br>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">{{priceLabel}}</label>
+          <input type="text" class="form-control" v-model="bookPrice"><br>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">{{descriptionLabel}}</label>
+          <input type="text" class="form-control" v-model="bookDescription"><br>
+        </div>
         <button type="submit">{{btnLabel}}</button><br>
         <span v-html="msgError"></span>
     </form>
+  </div>
+
 </template>
 
 <script>

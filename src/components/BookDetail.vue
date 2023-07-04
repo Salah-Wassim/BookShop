@@ -1,27 +1,31 @@
 <template>
-    <div v-bind:style="hiddenDetail">
-        <p>{{selectedBook.title}}</p>
-    </div>
-    <div v-if="selectedBook" v-bind:style="displayDetail">
-        <p>{{selectedBook.title}}</p>
-        <p>{{selectedBook.price}}</p>
-        <p>{{selectedBook.description}}</p>
+    <div class="card">
+        <div class="card-header">
+            Detail
+        </div>
+        <div class="card-body" >
+            <h3>Titre du livre : {{title}}</h3>
+            <p><b>Prix</b>: {{price}} euros</p>
+            <p><b>Description</b>: {{description}}</p>
+        </div>
     </div>
 </template>
 
 <script>
     export default{
-        props:['book'],
-        data(){
-            return{
-                selectedBook: null,
-                hiddenDetail: {
-                  display: "none"
-                },
-                displayDetail: {
-                  border: "solid 1px #000"
-                },
+        props:{
+            title: {
+                required: true,
+                type: String,
+            },
+            price: {
+                required: true,
+                type: Number,
+            },
+            description: {
+                required: false,
+                type: String
             }
-        }
+        },
     }
 </script>
