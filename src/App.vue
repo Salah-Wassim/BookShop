@@ -67,7 +67,7 @@
             :book = book
             @delete = "books.splice(index, 1)"
             @edit="editBook($event)"
-            @detail="showBookDetail($event)"
+            @detail="openModal($event)"
             @addCart="addCart($event)"
           ></BookItem>
         </li>
@@ -75,9 +75,8 @@
   </div>
 
   <BookDetail v-if="selectedBook"
-    :title="selectedBook.title"
-    :price="selectedBook.price"
-    :description="selectedBook.description"
+    @close="closeModal"
+    :book = selectedBook
   ></BookDetail>
 
   <!-- <BookForm ref="BookForm" :books="books"></BookForm> -->
@@ -165,6 +164,12 @@ export default{
       else{
         this.books = dataBooks;
       }
+    },
+    openModal(book){
+      this.selectedBook = book
+    },
+    closeModal() {
+      this.selectedBook = null;
     }
   },
   computed: {
